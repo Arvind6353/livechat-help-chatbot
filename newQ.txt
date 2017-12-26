@@ -1,0 +1,46 @@
+q1 :- How can we help you today?
+a1.1 :- Create PP Account.
+a1.2 :- Integrate with PP.
+a1.3 :- Existing User?
+q2 :- What would you like to do with your account?
+a2.1 :- Receive Payments
+a2.2 :- Shop with PP
+q3 :- Which country are you from/is your business from?
+a3.1 :- India
+a3.2 :- United States
+a3.3 :- Others
+res1 :- Please proceed to <a href="https://www.paypal.com/in/webapps/mpp/account-selection"> https://www.paypal.com/in/webapps/mpp/account-selection</a> 
+res2 :- Please proceed to  <a href="https://www.paypal.com/us/webapps/mpp/account-selection"> https://www.paypal.com/us/webapps/mpp/account-selection</a> 
+q4 :- Which country is your business setup in?
+a4.1 :- India
+a4.2 :- Others(US)
+q5 :- Do you use any 3rd party shopping cart?
+a5.1 :- Yes
+a5.2 :- No
+res4 :- Please proceed to http://wikipaydia/?title=Category%3A3rd_Party_Shopping_Carts
+q6 :- Whom do you sell to?
+a6.1 :- To consumer
+a6.2 :- To other business
+res5 :- Please email us at dl-pp-integrations@paypal.com for further help.
+q7 :- What channels do you currently sell on? 
+a7.1 :- Web/Mobile
+a7.2 :- Apps
+res6 :- https://developer.paypal.com/docs/accept-payments/express-checkout/ec-braintree-sdk/get-started/
+q8 :- What technologies do you use for development?
+a8.1 :- HTML
+a8.2 :- Client Side
+a8.3 :- Server Side
+a8.4 :- APIs
+res7 :- Please proceed to https://developer.paypal.com/docs/integration/web/
+res8 :- Please proceed to https://developer.paypal.com/demo/checkout/#/pattern/client
+res9 :- Please proceed to https://developer.paypal.com/demo/checkout/#/pattern/server
+q10 :- How do you perform API calls?
+a10.1 :- NVP(Name-Value-Pair)
+a10.2 :- REST
+res10.1 :- Please proceed to https://developer.paypal.com/docs/classic/express-checkout/
+res10.2 :- Please proceed to https://developer.paypal.com/docs/integration/direct/express-checkout/integration-jsv4/
+q9 :- Are you a merchant or a consumer?
+a9.1 :- Merchant
+a9.2 :- Consumer
+res404 :- https://developer.paypal.com/docs/directory/
+####

@@ -1,0 +1,46 @@
+q1 :- Which country is your business registered in?
+a1.1 :- india
+a1.2 :- australia
+a1.3 :- china
+a1.4 :- hong kong
+a1.5 :- japan
+a1.6 :- singapore
+q2 :- How do you want to accept payments?
+a2.1 :- On a website
+a2.2 :- Billing/Invoice
+a2.3 :- On my Mobile website
+a2.4 :- On a Mobile App
+a2.5 :- At a Point of Sale
+a2.6 :- Manual keyed order
+res2 :- eMail Payments
+res3 :- Mobile Express Checkout - PayPal Payments Advanced
+res4 :- Mobile Payment Library - PayPal Payments Advanced
+res5 :- Point Of Sale
+res6.1 :- Virtual Terminal - PayPal Payments Pro
+res6.2 :- Sorry this option is available for Australia, Hong Kong & Japan :(. Go Here: https://www.facebook.com/
+q3 :- What do you as a merchant sell?
+a3.1 :- Physical Goods
+a3.2 :- Digital Goods
+a3.3 :- Services
+q4 :- Does your business accept recurring payments?
+a4.1 :- Yes
+a4.2 :- No
+q5 :- Do you plan to use a 3rd party shopping cart?
+a5.1 :- Yes
+a5.2 :- No
+q6 :- How would you rate the technical skills at your disposal?
+a6.1 :- I know Basic HTML
+a6.2 :- I am a web developer
+res1.1 :- Express Checkout - PayPal Payments Advanced
+res1.2 :- Website Payment Standard - PayPal Payments Standard
+res1.3 :- Express Checkout Digital Goods - PayPal Payments Advanced
+q7 :- Are there parallel payments involved in the conduct of your business (i.e. do you pay multiple vendors or developers a part of every transaction)?
+a7.1 :- Yes
+a7.2 :- No
+q8 :- Are there chained payments involved in the conduct of your business (i.e. do you pay vendors or developers part of every transaction)?
+a8.1 :- Yes
+a8.2 :- No
+q9 :- How many unique items does a typical customer buy? (approximately)
+a9.1 :- Greater Than 20
+a9.2 :- Less Than 20
+####
