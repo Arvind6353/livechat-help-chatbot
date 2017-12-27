@@ -135,10 +135,11 @@ server.get('/info',(req,res,next) => {
 					var qrdata=tree.generator(map[msg.sender].prevQ);
 					//console.log("First",qrdata);
 					qrdata.pop();
-					// f.quickreply(msg.sender,map[msg.sender].prevQ.data.text,qrdata,function(data){
-					// 	//console.log("Second returning");
-					// 	return null;
-                    // });
+					
+					//  f.quickreply(msg.sender,map[msg.sender].prevQ.data.text,qrdata,function(data){
+					//  	//console.log("Second returning");
+					//  	return null;
+                    //  });
                     
                     
                     res.json({

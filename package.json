@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha test",
-    "start": "node app.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "assert": "^1.4.1",
     "async": "^2.5.0",
     "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "crypto": "^1.0.1",
     "express": "^4.16.2",

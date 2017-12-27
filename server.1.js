@@ -7,13 +7,10 @@ const tree = require('./n-ary.js');
 const assert = require('assert');
 const db = require('./db.js');
 const request = require('request');
-const express = require("express");
+const server = Restify.createServer({
+	name: 'Test'
+});
 
-var cors = require("cors");
-
-var bodyParser = require('body-parser');
-
-var app = new express();
 var ctr=0;
 
 //const messages
@@ -25,11 +22,8 @@ const UNDER_CONSTRUCTION_MESSAGE_2=" for further help.";
 const HAPPY_MESSAGE_1 = "\n<br/>Thank You. :D :D. Use your reference id ";
 const HAPPY_MESSAGE_2 = " for any further communication";
 
-app.use(cors());
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+server.use(Restify.jsonp());
+server.use(Restify.bodyParser());
 
 const PORT = process.env.PORT || 3001;
 
@@ -38,16 +32,14 @@ const config = require('./config');
 
 //FBeamer
 const FBeamer = require('./fbeamer');
-const fb = new FBeamer(config);
+const f = new FBeamer(config);
 
-const WebBeamer = require("./webbeamer");
-
-const WrapperBot = require('./wrapperbot');
-const bot = new WrapperBot();
+const WebBeamer = require('./webbeamer');
+const w = new WebBeamer();
 
 //Register the webhooks
-app.get('/',(req,res,next)=>{
-	fb.registerHook(req,res);
+server.get('/',(req,res,next)=>{
+	f.registerHook(req,res);
 	return next();
 });
 
@@ -92,23 +84,8 @@ function NLPmatcher(nlptext,children){
 }
 
 //Receive all incoming requests
-app.post('/',(req,res,next) => {
-	try {
-	var botType = bot.findAndReturnInstanceType(req.body.object);
-	var f ;
-	if(botType == 'WebBeamer') {
-		 f = new WebBeamer({});
-	} else {
-		 f = new FBeamer(config);
-	}
-	console.log("bot type",f);
-
-	if(req.body.type =="end") {
-		map[msg.sender].welcome = 0;
-		res.end();
-	}
-
-	f.incoming(req,res, function(msg) {
+server.post('/',(req,res,next) => {
+	f.incoming(req,res,msg => {
 		f.sender_action(msg.sender,"typing_on",function(data){
 			return null;
 		});
@@ -140,7 +117,7 @@ app.post('/',(req,res,next) => {
 					f.quickreply(msg.sender,map[msg.sender].prevQ.data.text,qrdata,function(data){
 						//console.log("Second returning");
 						return null;
-					}, req, res);
+					});
 				}
 				else{
 					map[msg.sender].prevQ=map[msg.sender].node;
@@ -170,8 +147,8 @@ app.post('/',(req,res,next) => {
 						map[msg.sender].welcome=0;
 						f.txt(msg.sender, UNDER_CONSTRUCTION_MESSAGE_1+map[msg.sender].node.data.text+UNDER_CONSTRUCTION_MESSAGE_2,function(data){
 								return null;
-							}, req, res);
-						}
+							});
+					}
 					else if(map[msg.sender].node.data.name[0]=='r'&&map[msg.sender].node.data.name[1]=='e'&&map[msg.sender].node.data.name[2]=='s'){
 						map[msg.sender].userdata.A=map[msg.sender].userdata.Q;
 						map[msg.sender].userdata.Q="Final Response";
@@ -180,8 +157,7 @@ app.post('/',(req,res,next) => {
 						
 							f.txt(msg.sender, map[msg.sender].node.data.text+HAPPY_MESSAGE_1+map[msg.sender].sessionid+HAPPY_MESSAGE_2,function(data){
 								return null;
-							}, req, res);
-							
+							});
 					}else{
 						var qrdata=tree.generator(map[msg.sender].node);
 						
@@ -190,8 +166,7 @@ app.post('/',(req,res,next) => {
 						}
 						f.quickreply(msg.sender,map[msg.sender].node.data.text,qrdata,function(data){
 							return null;
-						}, req, res);
-						
+						});
 					}
 				}
 			}
@@ -211,9 +186,9 @@ app.post('/',(req,res,next) => {
 				    if(data.messageId != undefined) {
 				    	f.quickreply(msg.sender,map[msg.sender].node.data.text,qrdata,function(data){
 							return null;
-						}, req, res,data.text);
+						});
 				    }
-				}, req, res,'dual');
+				});
 			}
 			else if(msg.message.quick_reply==undefined && msg.message.text != "help" && msg.message.text!= "bye" && msg.message.text!= "thanks"){
 				if(map[msg.sender].back==1){
@@ -233,19 +208,16 @@ app.post('/',(req,res,next) => {
 						map[msg.sender].welcome=0;
 						f.txt(msg.sender, UNDER_CONSTRUCTION_MESSAGE_1+map[msg.sender].node.data.text+UNDER_CONSTRUCTION_MESSAGE_2,function(data){
 								return null;
-							}, req, res);
-							
+							});
 					}else if(map[msg.sender].node.data.name.startsWith("res")){
 						map[msg.sender].welcome=0;
 						f.txt(msg.sender,map[msg.sender].node.data.text+HAPPY_MESSAGE_1+map[msg.sender].sessionid+HAPPY_MESSAGE_2,function(data){
 								return null;
-							}, req, res);
-							
+							});
 					}else{
 						f.quickreply(msg.sender,map[msg.sender].node.data.text,tree.generator(map[msg.sender].node),function(data){
 							return null;
-						}, req, res);
-						
+						});
 					}
 				}else{
 							var found=null;
@@ -266,30 +238,26 @@ app.post('/',(req,res,next) => {
 									map[msg.sender].welcome=0;
 									f.txt(msg.sender, UNDER_CONSTRUCTION_MESSAGE_1+map[msg.sender].node.data.text+UNDER_CONSTRUCTION_MESSAGE_2,function(data){
 											return null;
-										}, req, res);
-										
+										});
 								}else if(map[msg.sender].node.data.name.startsWith("res")){
 									map[msg.sender].welcome=0;
 									f.txt(msg.sender,map[msg.sender].node.data.text+HAPPY_MESSAGE_1+map[msg.sender].sessionid+HAPPY_MESSAGE_2,function(data){
 											return null;
-										}, req, res);
-										
+										});
 								}else{
 									//console.log(map[msg.sender].node.data.name);
 									f.quickreply(msg.sender,map[msg.sender].node.data.text,tree.generator(map[msg.sender].node),function(data){
 										return null;
-									}, req, res);
-									
+									});
 								}
 							}else if(found==null){
 									f.txt(msg.sender,STANDARD_MESSAGE, function(data){
 								    if(data.messageId != undefined) {
 								    	f.quickreply(msg.sender,map[msg.sender].node.data.text,tree.generator(map[msg.sender].node),function(data){
 											return null;
-										}, req, res,data.text);
-										
+										});
 								    }
-								}, req, res, 'dual');
+								});
 								}
 							});
 					}
@@ -299,26 +267,20 @@ app.post('/',(req,res,next) => {
 					if(data.messageId != undefined) {
 				    	f.quickreply(msg.sender,map[msg.sender].node.data.text,tree.generator(map[msg.sender].node),function(data){
 							return null;
-						}, req, res,data.text);
-						
+						});
 				    }
-				}, req, res,'dual');
+				});
 			}
 			else if((msg.message.text == "bye" || msg.message.text == "thanks") && msg.message.quick_reply == undefined){
 				f.txt(msg.sender,GOODBYE_MESSAGE,function(data){
 					map[msg.sender].welcome=0;
 					return null;
-				}, req, res);
-				
+				});
 			}
 		});
 	});
-} catch(err) {
-	console.log("error", err);
-	res.json({error: err});
-}
 });
 //Subscribe 
-fb.subscribe();
+f.subscribe();
 
-app.listen(PORT,() => console.log(`Running on port ${PORT}`));
+server.listen(PORT,() => console.log(`Running on port ${PORT}`));
