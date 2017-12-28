@@ -22,7 +22,7 @@ const HELP_MESSAGE="Hey its simple. These set of questions will help you to choo
 const STANDARD_MESSAGE="Oh! Sorry I didn\'t get you. Please select from the options.";
 const UNDER_CONSTRUCTION_MESSAGE_1="Sorry :(. We are not handling it right now. Please check ";
 const UNDER_CONSTRUCTION_MESSAGE_2=" for further help.";
-const HAPPY_MESSAGE_1 = "\nThank You :) Use your reference id ";
+const HAPPY_MESSAGE_1 = "\nThank You :)\n Use your reference id ";
 const HAPPY_MESSAGE_2 = " for any further communication";
 
 app.use(cors());
