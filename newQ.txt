@@ -9,15 +9,15 @@ q3 :- Which country are you from/is your business from?
 a3.1 :- India
 a3.2 :- United States
 a3.3 :- Others
-res1 :- Please proceed to <a href="https://www.paypal.com/in/webapps/mpp/account-selection"> https://www.paypal.com/in/webapps/mpp/account-selection</a> 
-res2 :- Please proceed to  <a href="https://www.paypal.com/us/webapps/mpp/account-selection"> https://www.paypal.com/us/webapps/mpp/account-selection</a> 
+res1 :- Please proceed to <a href="https://www.paypal.com/in/webapps/mpp/account-selection" target="_blank"> https://www.paypal.com/in/webapps/mpp/account-selection</a> 
+res2 :- Please proceed to  <a href="https://www.paypal.com/us/webapps/mpp/account-selection" target="_blank"> https://www.paypal.com/us/webapps/mpp/account-selection</a> 
 q4 :- Which country is your business setup in?
 a4.1 :- India
 a4.2 :- Others(US)
 q5 :- Do you use any 3rd party shopping cart?
 a5.1 :- Yes
 a5.2 :- No
-res4 :- Please proceed to http://wikipaydia/?title=Category%3A3rd_Party_Shopping_Carts
+res4 :- Please proceed to <a href="http://wikipaydia/?title=Category%3A3rd_Party_Shopping_Carts" target="_blank">http://wikipaydia/?title=Category%3A3rd_Party_Shopping_Carts</a>
 q6 :- Whom do you sell to?
 a6.1 :- To consumer
 a6.2 :- To other business
@@ -25,22 +25,22 @@ res5 :- Please email us at dl-pp-integrations@paypal.com for further help.
 q7 :- What channels do you currently sell on? 
 a7.1 :- Web/Mobile
 a7.2 :- Apps
-res6 :- https://developer.paypal.com/docs/accept-payments/express-checkout/ec-braintree-sdk/get-started/
+res6 :- <a href="https://developer.paypal.com/docs/accept-payments/express-checkout/ec-braintree-sdk/get-started/" target="_blank">https://developer.paypal.com/docs/accept-payments/express-checkout/ec-braintree-sdk/get-started/</a>
 q8 :- What technologies do you use for development?
 a8.1 :- HTML
 a8.2 :- Client Side
 a8.3 :- Server Side
 a8.4 :- APIs
-res7 :- Please proceed to https://developer.paypal.com/docs/integration/web/
-res8 :- Please proceed to https://developer.paypal.com/demo/checkout/#/pattern/client
-res9 :- Please proceed to https://developer.paypal.com/demo/checkout/#/pattern/server
+res7 :- Please proceed to <a href="https://developer.paypal.com/docs/integration/web/" target="_blank">https://developer.paypal.com/docs/integration/web/</a>
+res8 :- Please proceed to <a href="https://developer.paypal.com/demo/checkout/#/pattern/client" target="_blank">https://developer.paypal.com/demo/checkout/#/pattern/client</a>
+res9 :- Please proceed to <a href="https://developer.paypal.com/demo/checkout/#/pattern/server" target="_blank">https://developer.paypal.com/demo/checkout/#/pattern/server</a>
 q10 :- How do you perform API calls?
 a10.1 :- NVP(Name-Value-Pair)
 a10.2 :- REST
-res10.1 :- Please proceed to https://developer.paypal.com/docs/classic/express-checkout/
-res10.2 :- Please proceed to https://developer.paypal.com/docs/integration/direct/express-checkout/integration-jsv4/
+res10.1 :- Please proceed to <a href="https://developer.paypal.com/docs/classic/express-checkout/" target="_blank">https://developer.paypal.com/docs/classic/express-checkout/</a>
+res10.2 :- Please proceed to <a href="https://developer.paypal.com/docs/integration/direct/express-checkout/integration-jsv4/" target="_blank">https://developer.paypal.com/docs/integration/direct/express-checkout/integration-jsv4/</a>
 q9 :- Are you a merchant or a consumer?
 a9.1 :- Merchant
 a9.2 :- Consumer
-res404 :- https://developer.paypal.com/docs/directory/
+res404 :- <a href="https://developer.paypal.com/docs/directory/" target="_blank">https://developer.paypal.com/docs/directory/</a>
 ####
