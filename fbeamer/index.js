@@ -41,7 +41,7 @@ class FBeamer{
 							timeOfMessage: msgEvent.timestamp,
 							message: msgEvent.message
 						}
-						console.log("message ", JSON.stringify(message));
+						console.log("message ", JSON.stringify(messageObj.message));
 						cb(messageObj);
 					});
 				});
