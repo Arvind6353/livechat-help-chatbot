@@ -16,19 +16,19 @@ class FBeamer{
 		}
 	}
 
-		registerHook(req, res) {
-			// If req.query.hub.mode is 'subscribe'
-			// and if req.query.hub.verify_token is the same as this.VERIFY_TOKEN
-			// then send back an HTTP status 200 and req.query.hub.challenge
-			let {mode, verify_token, challenge} = req.query.hub;
-
-			if(mode === 'subscribe' && verify_token === this.VERIFY_TOKEN) {
-				return res.end(challenge);
-			} else {
-				console.log("Could not register webhook!");
-				return res.status(403).end();
-			}
-		}
+	registerHook(req, res) {
+		// If req.query.hub.mode is 'subscribe'
+		// and if req.query.hub.verify_token is the same as this.VERIFY_TOKEN
+		// then send back an HTTP status 200 and req.query.hub.challenge
+		if (req.query['hub.mode'] === 'subscribe' &&
+		req.query['hub.verify_token'] === 'starter_bot_token') {
+		console.log("Validating webhook");
+		res.status(200).send(req.query['hub.challenge']);
+	  } else {
+		console.error("Failed validation. Make sure the validation tokens match.");
+		res.sendStatus(403);
+	  }
+	}
 
 		incoming(req,res,cb){
 			let data=req.body;
