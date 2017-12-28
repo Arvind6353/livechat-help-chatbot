@@ -46,11 +46,14 @@ const WrapperBot = require('./wrapperbot');
 const bot = new WrapperBot();
 
 //Register the webhooks
-app.get('/',(req,res,next)=>{
+app.get('/webhook',(req,res,next)=>{
 	fb.registerHook(req,res);
 	return next();
 });
 
+app.get('/', function(req,res,next){
+	res.send("<h1>hello bot</h1>");
+})
 
 //Global Vars
 let map=[];
@@ -92,7 +95,7 @@ function NLPmatcher(nlptext,children){
 }
 
 //Receive all incoming requests
-app.post('/',(req,res,next) => {
+app.post('/webhook',(req,res,next) => {
 	try {
 	var botType = bot.findAndReturnInstanceType(req.body.object);
 	var f ;
