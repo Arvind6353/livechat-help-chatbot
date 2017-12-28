@@ -20,9 +20,9 @@ var ctr=0;
 const GOODBYE_MESSAGE="You're welcome. See you later :D";
 const HELP_MESSAGE="Hey its simple. These set of questions will help you to choose which product of PayPal you can use in your website. Continue by clicking the options.";
 const STANDARD_MESSAGE="Oh! Sorry I didn\'t get you. Please select from the options.";
-const UNDER_CONSTRUCTION_MESSAGE_1="Sorry :-(. We are not handling it right now. Please check ";
+const UNDER_CONSTRUCTION_MESSAGE_1="Sorry :(. We are not handling it right now. Please check ";
 const UNDER_CONSTRUCTION_MESSAGE_2=" for further help.";
-const HAPPY_MESSAGE_1 = "\nThank You. :D :D. Use your reference id ";
+const HAPPY_MESSAGE_1 = "\nThank You :) Use your reference id ";
 const HAPPY_MESSAGE_2 = " for any further communication";
 
 app.use(cors());
@@ -208,7 +208,7 @@ app.post('/webhook',(req,res,next) => {
 				map[msg.sender].node = tree.searcher(0);
 				map[msg.sender].userdata.Q=map[msg.sender].node.data.text;
 				map[msg.sender].prevQ=map[msg.sender].node;
-				f.txt(msg.sender,`Hi ${dataname.first_name}! Welcome to PayPal.`, function(data){
+				f.txt(msg.sender,`Hi ${dataname.first_name} :) Welcome to PayPal.`, function(data){
 					//consoler.log(data);
 					var qrdata=tree.generator(map[msg.sender].node);
 					qrdata.pop();
