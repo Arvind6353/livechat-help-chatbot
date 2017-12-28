@@ -47,6 +47,7 @@ const bot = new WrapperBot();
 var f ;
 //Register the webhooks
 app.get('/webhook',(req,res,next)=>{
+	fb.registerHook(req,res);
 
 	var botType = bot.findAndReturnInstanceType(req.body.object);
 	
@@ -55,10 +56,6 @@ app.get('/webhook',(req,res,next)=>{
 	} else {
 			f = new FBeamer(config);
 	}
-	
-	fb.registerHook(req,res);
-
-
 	console.log("bot type",f);
 
 	return next();
@@ -110,7 +107,15 @@ function NLPmatcher(nlptext,children){
 //Receive all incoming requests
 app.post('/webhook',(req,res,next) => {
 	try {
-	
+	var botType = bot.findAndReturnInstanceType(req.body.object);
+	var f ;
+	if(botType == 'WebBeamer') {
+		 f = new WebBeamer({});
+	} else {
+		 f = new FBeamer(config);
+	}
+	console.log("bot type",f);
+
 	if(req.body.type =="end") {
 		map[msg.sender].welcome = 0;
 		res.end();

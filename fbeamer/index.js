@@ -32,6 +32,7 @@ class FBeamer{
 
 		incoming(req,res,cb){
 			let data=req.body;
+			console.log("fb incoming");
 			if(data.object ==='page'){
 				data.entry.forEach(pageObj => {
 					pageObj.messaging.forEach(msgEvent => {

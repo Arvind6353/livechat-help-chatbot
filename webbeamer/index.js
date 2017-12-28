@@ -6,6 +6,8 @@ class WebBeamer{
 		}
 
 		incoming(req,res,cb){
+
+			console.log("web incoming");
 			var data = req.body.data;
 			var type = req.body.type;
 			var msg = {
